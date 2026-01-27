@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AM Agency | Social Media Manager & Content</title>
+    <meta name="description" content="Servis Social Media Manager dan template content untuk brand yang nak nampak aktif & dipercayai.">
+    <meta name="theme-color" content="#6366f1">
+    
+    <!-- Google Fonts: Plus Jakarta Sans (Modern & Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Phosphor Icons - Ringan & Cantik) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- 1. CSS VARIABLES (SYSTEM WARNA) --- */
+        :root {
+            --primary: #6366f1;       /* Indigo */
+            --primary-dark: #4f46e5;
+            --accent: #06b6d4;        /* Cyan/Teal */
+            --accent-glow: #22d3ee;
+            --support: #fbbf24;       /* Warm Yellow */
+            --bg-body: #f8fafc;       /* Off-white */
+            --bg-card: #ffffff;
+            --text-main: #1e293b;     /* Charcoal */
+            --text-muted: #64748b;    /* Abu-abu */
+            --gradient-main: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 15px -3px rgba(99, 102, 241, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --price-strikethrough: #94a3b8;
+            --price-promo: #ef4444;
+        }
+
+        /* --- 2. RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* ANIMATED BACKGROUND */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(-45deg, #f8fafc, #f3e8ff, #e0e7ff, #f0f9ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Subtle Grid Pattern Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Background Blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: floatBlob 10s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, var(--primary), transparent); }
+        .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, var(--accent), transparent); animation-delay: -5s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 50px) scale(1.1); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        button { font-family: inherit; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 3. UTILITY COMPONENTS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary);
+            border: 2px solid rgba(99, 102, 241, 0.1);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: white;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-popular { background: #fff1f2; color: #e11d48; border: 1px solid #ffe4e6; }
+        .badge-service { background: #eff6ff; color: #2563eb; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p { color: var(--text-muted); }
+
+        /* --- 4. NAVIGATION --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .logo i { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+            cursor: pointer;
+        }
+        .nav-item:hover, .nav-item.active { color: var(--primary); }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+
+        .mobile-menu-btn { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text-main); }
+
+        /* Mobile Menu */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-nav-overlay.open { display: flex; animation: slideDown 0.3s ease; }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            padding: 4rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 85vh;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        .hero-text .highlight { color: var(--primary); }
+
+        /* Catchy Badge */
+        .honest-note {
+            background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            transition: transform 0.3s;
+        }
+        .honest-note:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6); }
+
+        /* Key Message Box (Glowing) */
+        .key-message-box {
+            background: var(--gradient-main);
+            color: white;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+            transition: transform 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-size: 1.05rem;
+        }
+        .key-message-box:hover { transform: scale(1.02); }
+        .key-message-icon {
+            background: white;
+            color: var(--primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .hero-visual { position: relative; }
+        
+        .visual-card {
+            background: white;
+            padding: 10px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 2;
+            transform: rotate(-2deg);
+            transition: 0.5s;
+            overflow: hidden;
+        }
+        .visual-card:hover { transform: rotate(0) scale(1.02); }
+        .visual-card img { border-radius: 12px; width: 100%; height: 350px; object-fit: cover; }
+        
+        .floating-stat {
+            position: absolute;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 3;
+            animation: floatY 4s infinite ease-in-out;
+            white-space: nowrap;
+        }
+        .stat-1 { top: 30px; right: -20px; animation-delay: 1s; }
+        .stat-2 { bottom: 40px; left: -20px; }
+
+        @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* --- 6. SECTIONS (General) --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .benefit-card:hover { background: white; transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-main);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feat-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* --- 7. PRODUCTS/PACKAGE --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: minmax(300px, 500px);
+            justify-content: center;
+            padding-bottom: 4rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+        .p-card-body { padding: 2.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .price-container {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .price-original {
+            text-decoration: line-through;
+            color: var(--price-strikethrough);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .price-current {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--price-promo);
+            line-height: 1;
+        }
+        
+        .package-includes li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+        .package-includes i { color: var(--primary); margin-top: 4px; flex-shrink: 0; }
+
+        /* --- 8. FOOTER --- */
+        footer {
+            background: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        /* --- 9. DETAIL VIEW --- */
+        .detail-view {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* --- 10. RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            .hero { grid-template-columns: 1fr; text-align: center; gap: 3rem; padding-top: 2rem; min-height: auto; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .key-message-box { width: 100%; justify-content: center; text-align: left; }
+            .hero-visual { max-width: 500px; margin: 0 auto; width: 100%; }
+            .hero-text div[style*="display: flex"] { justify-content: center; } /* Center buttons */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-content .cta-wa { display: none; }
+            .mobile-menu-btn { display: block; }
+            
+            .hero-text h1 { font-size: 2.2rem; }
+            .key-message-box { padding: 12px 20px; font-size: 0.95rem; }
+            
+            .visual-card img { height: 250px; }
+            .floating-stat { padding: 0.8rem; font-size: 0.9rem; }
+            .stat-1 { top: 10px; right: -10px; }
+            .stat-2 { bottom: 20px; left: -10px; }
+
+            .section-title h2 { font-size: 2rem; }
+            
+            .p-card-body { padding: 1.5rem; }
+            .price-current { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Ambience -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div onclick="navigate('home')" class="logo">
+                <i class="ph-fill ph-polygon"></i> AM Agency
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                <li class="nav-item active" onclick="navigate('home')">Utama</li>
+                <li class="nav-item" onclick="navigate('products')">Pakej</li>
+                <li class="nav-item" onclick="navigate('contact')">Hubungi</li>
+            </ul>
+            <button onclick="openWhatsApp()" class="btn btn-accent cta-wa">
+                <i class="ph-bold ph-whatsapp-logo"></i> WhatsApp Sekarang
+            </button>
+            
+            <!-- Mobile Menu Trigger -->
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="ph-bold ph-list"></i>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div class="mobile-nav-overlay" id="mobileMenu">
+            <div class="nav-item" onclick="navigate('home')">Utama</div>
+            <div class="nav-item" onclick="navigate('products')">Pakej</div>
+            <div class="nav-item" onclick="navigate('contact')">Hubungi</div>
+            <button onclick="openWhatsApp()" class="btn btn-accent" style="width: 100%; margin-top: 10px;">
+                <i class="ph-bold ph-whatsapp-logo"></i> WhatsApp Sekarang
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app">
+        <!-- Javascript renders content here -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 1rem;">AM Agency</div>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Membantu brand anda kekal relevan dan aktif di media sosial.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                <a href="#" class="btn btn-secondary" style="border-radius: 50%; padding: 12px; width: 48px; height: 48px;"><i class="ph-bold ph-tiktok-logo" style="font-size: 1.2rem;"></i></a>
+                <a href="#" class="btn btn-secondary" style="border-radius: 50%; padding: 12px; width: 48px; height: 48px;"><i class="ph-bold ph-facebook-logo" style="font-size: 1.2rem;"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; color: #94a3b8;">&copy; 2024 AM Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA PAKEJ ---
+        const products = [
+            {
+                id: 1,
+                name: "Pakej Content Bulanan (SME)",
+                category: "Pakej",
+                originalPrice: "RM2800",
+                price: "RM2200",
+                pricePeriod: "/ Bulan",
+                shortDescription: "Pakej lengkap untuk bisnes yang nak mula konsisten buat content tanpa kos besar.",
+                fullDescription: "📌 Pakej ini sesuai untuk bisnes yang nak mula konsisten buat content tanpa kos besar. Kami uruskan semua dari A-Z supaya anda boleh fokus pada operasi bisnes.",
+                includes: [
+                    "±15 video TikTok (≤ 1 minit)",
+                    "Idea & script penuh",
+                    "Rakaman video (Kami ke premis 3-4x sebulan)",
+                    "Editing + subtitle simple",
+                    "1–2 kali revision/video",
+                    "Posting TikTok ikut jadual",
+                    "Facebook ambil video dari TikTok",
+                    "Video boleh digunakan untuk iklan (ads)"
+                ],
+                badge: "HARGA PROMO"
+            }
+        ];
+
+        // --- GLOBAL SETTINGS ---
+        const app = document.getElementById('app');
+        const phoneNo = "601112576412";
+
+        // --- CORE FUNCTIONS ---
+        function openWhatsApp(message = "") {
+            const text = encodeURIComponent(message || "Hi AM Agency, saya berminat nak tahu lebih lanjut tentang servis content video.");
+            window.open(`https://wa.me/${phoneNo}?text=${text}`, '_blank');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+            // Change icon if needed
+            const btn = document.querySelector('.mobile-menu-btn i');
+            if(menu.classList.contains('open')) {
+                btn.classList.replace('ph-list', 'ph-x');
+            } else {
+                btn.classList.replace('ph-x', 'ph-list');
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.remove('open');
+            document.querySelector('.mobile-menu-btn i').classList.replace('ph-x', 'ph-list');
+        }
+
+        function navigate(page, param) {
+            closeMobileMenu();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            
+            // Update Active State
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            
+            // Route
+            switch(page) {
+                case 'home':
+                    // Highlight first nav item
+                    const homeNavs = document.querySelectorAll('.nav-item');
+                    if(homeNavs.length > 0) homeNavs[0].classList.add('active');
+                    renderHome();
+                    break;
+                case 'products':
+                    const prodNavs = document.querySelectorAll('.nav-item');
+                    if(prodNavs.length > 1) prodNavs[1].classList.add('active');
+                    renderProducts();
+                    break;
+                case 'detail':
+                    renderDetail(param);
+                    break;
+                case 'contact':
+                    const contNavs = document.querySelectorAll('.nav-item');
+                    if(contNavs.length > 2) contNavs[2].classList.add('active');
+                    renderContact();
+                    break;
+                default:
+                    renderHome();
+            }
+        }
+
+        // --- RENDER VIEWS ---
+
+        // 1. HOME
+        function renderHome() {
+            app.innerHTML = `
+                <!-- Hero -->
+                <section class="container hero">
+                    <div class="hero-text">
+                        <div class="honest-note">
+                            <i class="ph-fill ph-rocket-launch"></i> AM Agency: Small Team, Big Impact
+                        </div>
+                        
+                        <h1>Kami bantu bisnes kecil <span class="highlight">nampak aktif</span> & yakinkan pelanggan melalui content video.</h1>
+                        
+                        <p style="margin: 1.5rem 0; font-size: 1.1rem; color: var(--text-muted);">
+                            AM Agency ialah small team yang fokus bantu local business & SME bina kehadiran di TikTok secara konsisten dari idea, rakaman, sampai posting.
+                        </p>
+
+                        <div class="key-message-box">
+                            <div class="key-message-icon"><i class="ph-bold ph-check"></i></div>
+                            <span>Anda fokus urus bisnes. Kami urus content.</span>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button onclick="openWhatsApp()" class="btn btn-primary">📲 Hubungi di WhatsApp</button>
+                            <button onclick="navigate('products')" class="btn btn-secondary">Lihat Pakej</button>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="visual-card">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop" alt="Videographer Camera Setup">
+                            <div style="position:absolute; top:20px; right:20px; background:rgba(0,0,0,0.7); color:white; padding:6px 12px; border-radius:6px; display:flex; align-items:center; gap:8px; font-size:0.8rem; font-weight:700; letter-spacing:1px; backdrop-filter:blur(4px);">
+                                <div style="width:10px; height:10px; background:#ef4444; border-radius:50%; animation: blink 1s infinite;"></div> REC
+                            </div>
+                            <div style="position:absolute; bottom:0; left:0; width:100%; height:40%; background:linear-gradient(to top, rgba(0,0,0,0.5), transparent);"></div>
+                        </div>
+                        <div class="floating-stat stat-1">
+                            <i class="ph-fill ph-tiktok-logo" style="color:var(--text-main); font-size:1.5rem;"></i>
+                            <div>
+                                <div style="font-size:0.8rem; color:#64748b;">Platform Fokus</div>
+                                <div style="font-weight:bold; color:var(--text-main);">TikTok & FB</div>
+                            </div>
+                        </div>
+                        <div class="floating-stat stat-2">
+                            <i class="ph-fill ph-check-circle" style="color:var(--primary); font-size:1.5rem;"></i>
+                            <div>
+                                <div style="font-weight:bold; color:var(--text-main);">TRUSTED</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Us -->
+                <section class="container" style="padding: 0 20px 4rem 20px;">
+                   <div style="background: rgba(255, 255, 255, 0.9); border-radius: var(--radius-lg); padding: 3rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden; backdrop-filter: blur(10px);">
+                        <div class="bg-blob" style="background:var(--accent); width:200px; height:200px; top:-50px; right:-50px; opacity:0.1;"></div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+                            <div>
+                                <div class="badge badge-service" style="margin-bottom: 1rem;">Tentang Kami</div>
+                                <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">Dari Pengalaman Sebenar, Untuk <span style="color:var(--primary);">Bisnes Sebenar</span>.</h2>
+                                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                                    AM Agency bermula daripada pengalaman mengurus content TikTok secara konsisten setiap hari untuk bisnes tempatan menghasilkan views, komen, dan inquiry sebenar.
+                                </p>
+                            </div>
+                            <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                                <h3 style="font-size: 1.2rem; margin-bottom: 1.5rem; display:flex; align-items:center; gap:10px;">
+                                    <i class="ph-fill ph-warning-circle" style="color: #f59e0b;"></i> Kami faham realiti SME:
+                                </h3>
+                                <ul style="display: flex; flex-direction: column; gap: 1rem;">
+                                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                        <i class="ph-bold ph-x-circle" style="color: #ef4444; font-size: 1.2rem;"></i>
+                                        <span style="color: var(--text-muted);">Tak cukup masa nak fikir content</span>
+                                    </li>
+                                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                        <i class="ph-bold ph-x-circle" style="color: #ef4444; font-size: 1.2rem;"></i>
+                                        <span style="color: var(--text-muted);">Nak posting tapi tak tahu nak cakap apa</span>
+                                    </li>
+                                    <li style="display: flex; gap: 12px; align-items: flex-start;">
+                                        <i class="ph-bold ph-x-circle" style="color: #ef4444; font-size: 1.2rem;"></i>
+                                        <span style="color: var(--text-muted);">Nak nampak aktif, bukan sekadar ada akaun</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                   </div>
+                </section>
+
+                <!-- What We Do -->
+                <section class="container" style="padding: 4rem 20px;">
+                    <div class="section-title">
+                        <h2>Apa Yang Kami Buat</h2>
+                        <p>Kami urus content video TikTok dari A–Z:</p>
+                    </div>
+                    <div class="benefits-grid">
+                        ${createBenefitCard('ph-lightbulb', 'Idea & Konsep', 'Fokus kepada branding + sales.')}
+                        ${createBenefitCard('ph-scroll', 'Script Penuh', 'Tak perlu pening fikir ayat, kami sediakan.')}
+                        ${createBenefitCard('ph-video-camera', 'Rakaman Video', 'Talking head, trending & vlog style.')}
+                        ${createBenefitCard('ph-scissors', 'Editing + Subtitle', 'Video ringkas yang kemas dan mudah faham.')}
+                        ${createBenefitCard('ph-calendar-check', 'Posting TikTok', 'Kami post ikut jadual yang ditetapkan.')}
+                        ${createBenefitCard('ph-facebook-logo', 'Repurpose ke FB', 'Video turut dimuat naik ke Facebook.')}
+                    </div>
+                    
+                    <div style="margin-top: 3rem; text-align: center; background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); backdrop-filter: blur(5px);">
+                        <h3 style="margin-bottom: 1.5rem; font-size: 1.3rem;">📌 Sesuai untuk:</h3>
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <div class="feat-pill" style="background:#fff7ed; color:#c2410c;"><i class="ph-fill ph-coffee"></i> F&B</div>
+                            <div class="feat-pill" style="background:#eff6ff; color:#1d4ed8;"><i class="ph-fill ph-device-mobile"></i> Gadget & Smartphone Repair</div>
+                            <div class="feat-pill" style="background:#f0fdf4; color:#15803d;"><i class="ph-fill ph-storefront"></i> Local Business SME</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio / Results -->
+                <section class="container" style="padding: 0 20px 4rem 20px;">
+                    <div style="background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(238, 242, 255, 0.9) 100%); border-radius: var(--radius-lg); padding: 3rem; border: 1px solid #e2e8f0; backdrop-filter: blur(10px);">
+                        <div class="section-title" style="margin-bottom: 2rem;">
+                            <h2>Contoh Hasil Kerja</h2>
+                            <p>Impak sebenar yang kami bawa kepada klien.</p>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                            ${createResultCard('ph-trend-up', '#dcfce7', '#166534', 'Views Konsisten', 'Video TikTok dengan prestasi tontonan yang stabil.')}
+                            ${createResultCard('ph-chat-text', '#dbeafe', '#1e40af', 'Inquiry Sebenar', 'Komen & DM berbentuk pertanyaan produk/servis.')}
+                            ${createResultCard('ph-handshake', '#fae8ff', '#86198f', 'Trust Pelanggan', 'Content yang bantu yakinkan pelanggan.')}
+                        </div>
+                        <div style="text-align: center; background: white; padding: 1.5rem; border-radius: 8px; border: 1px dashed var(--primary); display: inline-block; width: 100%;">
+                            <p style="font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem;">
+                                <i class="ph-fill ph-folder-open" style="color: var(--primary); margin-right: 5px;"></i> 
+                                📁 Portfolio video & screenshot views disediakan atas permintaan.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ -->
+                <section class="container" style="padding: 4rem 20px; max-width:800px;">
+                    <div class="section-title"><h2>Soalan Lazim (FAQ)</h2></div>
+                    <div style="display:flex; flex-direction:column; gap:1rem;">
+                        ${createFAQ('Kami tak pandai buat video, boleh ke?', 'Boleh. Kami sediakan idea & script penuh.')}
+                        ${createFAQ('Perlu ada pengalaman depan kamera?', 'Tak perlu. Kami guide masa rakaman.')}
+                        ${createFAQ('Boleh guna video ni untuk iklan?', 'Ya, video boleh digunakan untuk ads.')}
+                        ${createFAQ('Kalau nak tambah video?', 'Boleh, caj tambahan akan dibincangkan.')}
+                    </div>
+                </section>
+            `;
+        }
+
+        // 2. PRODUCTS / PAKEJ
+        function renderProducts() {
+            app.innerHTML = `
+                <section class="container" style="padding: 4rem 20px;">
+                    <div class="catalog-header">
+                        <div class="badge badge-service" style="margin-bottom:1rem;">Pakej Kami</div>
+                        <h1 style="text-align:center;">Pakej Content Bulanan</h1>
+                        <p style="color:var(--text-muted);">Pilihan paling berbaloi untuk bisnes SME.</p>
+                    </div>
+                    <div class="products-grid">
+                        ${products.map(p => createProductCard(p)).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        // 3. CONTACT
+        function renderContact() {
+            app.innerHTML = `
+                <section class="container" style="padding: 4rem 20px; max-width:800px;">
+                    <div class="section-title">
+                        <h2>Hubungi Kami</h2>
+                        <p>Ada soalan? Nak custom plan? Hello je!</p>
+                    </div>
+                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; margin-bottom:3rem;">
+                        <div style="background:white; padding:2rem; border-radius:var(--radius-md); text-align:center; box-shadow:var(--shadow-sm);">
+                            <i class="ph-fill ph-whatsapp-logo" style="font-size:2.5rem; color:#25D366; margin-bottom:1rem;"></i>
+                            <h3>WhatsApp</h3>
+                            <p style="color:var(--text-muted);">Respon pantas (9AM - 6PM)</p>
+                            <a href="https://wa.me/${phoneNo}" class="btn" style="color:var(--primary); margin-top:10px;">011-1257 6412</a>
+                        </div>
+                        <div style="background:white; padding:2rem; border-radius:var(--radius-md); text-align:center; box-shadow:var(--shadow-sm);">
+                            <i class="ph-fill ph-envelope" style="font-size:2.5rem; color:var(--accent); margin-bottom:1rem;"></i>
+                            <h3>Email</h3>
+                            <p style="color:var(--text-muted);">Untuk proposal rasmi</p>
+                            <a href="mailto:hakimieazuan@gmail.com" class="btn" style="color:var(--primary); margin-top:10px;">hakimieazuan@gmail.com</a>
+                        </div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color:white; padding:3rem; border-radius:var(--radius-lg); text-align:center;">
+                        <h2>Nak Cepat?</h2>
+                        <p style="margin: 1rem 0 2rem 0; color:#94a3b8;">Isi nama & soalan ringkas, terus buka WhatsApp dengan mesej siap.</p>
+                        <div style="display:flex; flex-direction:column; gap:10px; max-width:400px; margin:0 auto;">
+                            <input type="text" id="contactName" placeholder="Nama Anda" style="padding:12px; border-radius:8px; border:none; width:100%;">
+                            <textarea id="contactMsg" placeholder="Apa yang kami boleh bantu?" style="padding:12px; border-radius:8px; border:none; height:80px; width:100%; font-family:inherit;"></textarea>
+                            <button onclick="submitContact()" class="btn btn-accent" style="margin-top:10px; width:100%;">Hantar WhatsApp <i class="ph-bold ph-paper-plane-right"></i></button>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // 4. DETAIL VIEW
+        function renderDetail(id) {
+            const product = products.find(p => p.id == id);
+            if(!product) return navigate('products');
+            
+            const waMessage = `Hi AM Agency, saya berminat nak tahu lebih lanjut tentang *${product.name}* (RM${product.price}). Boleh terangkan?`;
+
+            app.innerHTML = `
+                <section class="container" style="padding: 4rem 20px;">
+                    <button onclick="navigate('products')" class="btn" style="padding-left:0; color:var(--text-muted); margin-bottom:1rem;">
+                        <i class="ph-bold ph-arrow-left"></i> Kembali ke Pakej
+                    </button>
+                    <div class="detail-view">
+                        <div class="detail-header">
+                            <span class="badge badge-popular">${product.badge}</span>
+                            <h1 style="margin-top:10px; font-size:2rem; line-height:1.2;">${product.name}</h1>
+                            <div class="price-container" style="justify-content: flex-start; margin-top: 1.5rem;">
+                                <span class="price-original">${product.originalPrice}</span>
+                                <span class="price-current">${product.price}</span>
+                                <span class="price-period">${product.pricePeriod}</span>
+                            </div>
+                        </div>
+                        <div style="margin-bottom:2rem;">
+                            <p style="color:var(--text-main); font-size:1.05rem;">${product.fullDescription}</p>
+                        </div>
+                        <div style="background:#f8fafc; padding:1.5rem; border-radius:12px; margin-bottom:2rem;">
+                            <h3 style="margin-bottom:1rem; font-size:1.1rem;">Apa yang termasuk:</h3>
+                            <ul class="package-includes">
+                                ${product.includes.map(item => `<li><i class="ph-fill ph-check-circle"></i> ${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:10px;">
+                            <button onclick="openWhatsApp('${waMessage}')" class="btn btn-primary" style="width:100%; font-size:1.1rem;">
+                                Tempah Pakej Sekarang <i class="ph-bold ph-whatsapp-logo"></i>
+                            </button>
+                            <p style="text-align:center; font-size:0.85rem; color:var(--text-muted);">Tiada bayaran auto. Kami akan discuss di WhatsApp.</p>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // --- COMPONENTS GENERATORS ---
+        function createBenefitCard(icon, title, desc) {
+            return `
+            <div class="benefit-card">
+                <div class="icon-box"><i class="ph-bold ${icon}"></i></div>
+                <h3>${title}</h3>
+                <p style="color:var(--text-muted); margin-top:0.5rem;">${desc}</p>
+            </div>`;
+        }
+
+        function createResultCard(icon, bg, color, title, desc) {
+            return `
+            <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: var(--shadow-sm);">
+                <div style="width: 50px; height: 50px; background: ${bg}; color: ${color}; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; font-size: 1.5rem;">
+                    <i class="ph-fill ${icon}"></i>
+                </div>
+                <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">${title}</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">${desc}</p>
+            </div>`;
+        }
+
+        function createFAQ(question, answer) {
+            return `
+            <details style="background:white; padding:1.5rem; border-radius:12px; cursor:pointer;">
+                <summary style="font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center;">${question} <i class="ph-bold ph-caret-down"></i></summary>
+                <p style="margin-top:1rem; color:var(--text-muted);">${answer}</p>
+            </details>`;
+        }
+
+        function createProductCard(product) {
+            return `
+                <div class="product-card">
+                    <div class="p-card-body">
+                        <div style="text-align:center;">
+                            <div class="badge badge-popular" style="margin-bottom:10px;">${product.badge}</div>
+                            <h3 style="font-size:1.4rem; line-height:1.3; margin-bottom:1rem;">${product.name}</h3>
+                            <div class="price-container">
+                                <span class="price-original">${product.originalPrice}</span>
+                                <span class="price-current">${product.price}</span>
+                            </div>
+                        </div>
+                        <ul class="package-includes" style="margin-bottom:2rem;">
+                            ${product.includes.map(item => `<li><i class="ph-fill ph-check"></i> ${item}</li>`).join('')}
+                        </ul>
+                        <div style="text-align:center; margin-top:auto;">
+                            <button onclick="navigate('detail', ${product.id})" class="btn btn-primary" style="width:100%; border-radius:8px;">Lihat Detail Penuh</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function submitContact() {
+            const name = document.getElementById('contactName').value;
+            const msg = document.getElementById('contactMsg').value;
+            if(!name || !msg) {
+                alert("Sila isi nama dan mesej.");
+                return;
+            }
+            openWhatsApp(`Hi AM Agency, nama saya ${name}. ${msg}`);
+        }
+
+        // --- INIT ---
+        renderHome();
+    </script>
+</body>
+</html>
