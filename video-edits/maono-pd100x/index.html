@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ms" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0b0b0c;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      #ground {
+        position: absolute;
+        inset: 0;
+        background: #0b0b0c;
+      }
+      #cam,
+      .bw {
+        position: absolute;
+        inset: 0;
+      }
+      #cam {
+        z-index: 1;
+      }
+      .bw {
+        z-index: 2;
+        opacity: 0;
+      }
+      #cam video,
+      .bw video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+      #fade {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        background: #000;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-pbna" id="root" data-composition-id="main" data-start="0" data-duration="103.95" data-width="1080" data-height="1920">
+      <div data-hf-id="hf-7hg0" id="ground"></div>
+
+      <!-- A-roll: hook (duplicate of src 7.45-13.45), then the full talk with the mute pause tightened -->
+      <div data-hf-id="hf-ftaq" id="cam">
+        <video data-color-grading="{&quot;preset&quot;:&quot;skin-soft&quot;,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.25,&quot;contrast&quot;:0.1,&quot;highlights&quot;:-0.16,&quot;shadows&quot;:0.2,&quot;whites&quot;:0,&quot;blacks&quot;:-0.05,&quot;temperature&quot;:0.07,&quot;tint&quot;:0.02,&quot;vibrance&quot;:0.05,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0.14,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-jz2m" id="a-hook" class="clip aroll" src="assets/aroll.mp4" data-start="0" data-duration="6" data-media-start="7.45" data-track-index="1" muted playsinline></video>
+        <video data-color-grading="{&quot;preset&quot;:&quot;skin-soft&quot;,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.25,&quot;contrast&quot;:0.1,&quot;highlights&quot;:-0.16,&quot;shadows&quot;:0.2,&quot;whites&quot;:0,&quot;blacks&quot;:-0.05,&quot;temperature&quot;:0.07,&quot;tint&quot;:0.02,&quot;vibrance&quot;:0.05,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0.14,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-1vod" id="a-seg1" class="clip aroll" src="assets/aroll.mp4" data-start="6" data-duration="52.3" data-media-start="0" data-track-index="1" muted playsinline></video>
+        <video data-color-grading="{&quot;preset&quot;:&quot;skin-soft&quot;,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.25,&quot;contrast&quot;:0.1,&quot;highlights&quot;:-0.16,&quot;shadows&quot;:0.2,&quot;whites&quot;:0,&quot;blacks&quot;:-0.05,&quot;temperature&quot;:0.07,&quot;tint&quot;:0.02,&quot;vibrance&quot;:0.05,&quot;saturation&quot;:0.04},&quot;details&quot;:{&quot;vignette&quot;:0.14,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-96hf" id="a-seg2" class="clip aroll" src="assets/aroll.mp4" data-start="58.3" data-duration="45.65" data-media-start="54.4" data-track-index="1" muted playsinline></video>
+      </div>
+
+      <!-- B-roll -->
+      <div data-hf-id="hf-7wxy" id="bw-hook" class="bw">
+        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.12,&quot;shadows&quot;:0.06,&quot;whites&quot;:0.02,&quot;blacks&quot;:-0.03,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.04,&quot;saturation&quot;:0.02},&quot;details&quot;:{&quot;vignette&quot;:0.08,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-ufut" id="b-hook" class="clip broll" src="assets/broll-mic.mp4" data-start="2.5" data-duration="3.5" data-media-start="0" data-track-index="2" muted playsinline></video>
+      </div>
+      <div data-hf-id="hf-yj21" id="bw-mic1" class="bw">
+        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.12,&quot;shadows&quot;:0.06,&quot;whites&quot;:0.02,&quot;blacks&quot;:-0.03,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.04,&quot;saturation&quot;:0.02},&quot;details&quot;:{&quot;vignette&quot;:0.08,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-feu7" id="b-mic1" class="clip broll" src="assets/broll-mic.mp4" data-start="15.95" data-duration="3.5" data-media-start="0" data-track-index="2" muted playsinline></video>
+      </div>
+      <div data-hf-id="hf-2h62" id="bw-mic2" class="bw">
+        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.12,&quot;shadows&quot;:0.06,&quot;whites&quot;:0.02,&quot;blacks&quot;:-0.03,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.04,&quot;saturation&quot;:0.02},&quot;details&quot;:{&quot;vignette&quot;:0.08,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-mps7" id="b-mic2" class="clip broll" src="assets/broll-mic.mp4" data-start="31.55" data-duration="3.4" data-media-start="2.6" data-track-index="2" muted playsinline></video>
+      </div>
+      <div data-hf-id="hf-44qd" id="bw-ports" class="bw">
+        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.12,&quot;shadows&quot;:0.06,&quot;whites&quot;:0.02,&quot;blacks&quot;:-0.03,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.04,&quot;saturation&quot;:0.02},&quot;details&quot;:{&quot;vignette&quot;:0.08,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-eotl" id="b-ports" class="clip broll" src="assets/broll-ports.mp4" data-start="79.3" data-duration="4.8" data-media-start="0" data-track-index="2" muted playsinline></video>
+      </div>
+      <div data-hf-id="hf-hht6" id="bw-cable" class="bw">
+        <video data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:0.7,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.07,&quot;highlights&quot;:-0.12,&quot;shadows&quot;:0.06,&quot;whites&quot;:0.02,&quot;blacks&quot;:-0.03,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0.04,&quot;saturation&quot;:0.02},&quot;details&quot;:{&quot;vignette&quot;:0.08,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.05,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-6bbm" id="b-cable" class="clip broll" src="assets/broll-cable.mp4" data-start="88.25" data-duration="4.15" data-media-start="3.95" data-track-index="2" muted playsinline></video>
+      </div>
+
+      <!-- Voice (cleaned + loudness-matched), cut in sync with the A-roll -->
+      <audio data-hf-id="hf-5jlu" id="vo-hook" src="assets/voice.wav" data-start="0" data-duration="6" data-media-start="7.45" data-volume="1" data-fade-out="0.04" data-track-index="3"></audio>
+      <audio data-hf-id="hf-5136" id="vo-seg1" src="assets/voice.wav" data-start="6" data-duration="52.3" data-media-start="0" data-volume="1" data-fade-in="0.03" data-fade-out="0.04" data-track-index="3"></audio>
+      <audio data-hf-id="hf-v2dr" id="vo-seg2" src="assets/voice.wav" data-start="58.3" data-duration="45.65" data-media-start="54.4" data-volume="1" data-fade-in="0.04" data-fade-out="0.4" data-track-index="3"></audio>
+
+      <!-- Hook -> full video seam -->
+      <div data-hf-id="hf-s61u" id="editorial-flash-overlay" data-composition-id="editorial-flash-overlay" data-composition-src="compositions/editorial-flash-overlay.html" data-start="5.42" data-duration="1" data-width="1080" data-height="1920" data-track-index="4" data-track-kind="graphics" style="z-index: 6; opacity: 0.75"></div>
+
+      <div data-hf-id="hf-c30r" id="callouts" data-composition-id="callouts" data-composition-src="compositions/callouts.html" data-start="0" data-duration="103.95" data-width="1080" data-height="1920" data-track-index="5" data-track-kind="graphics" style="z-index: 8"></div>
+
+      <div data-hf-id="hf-8hnf" id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="103.95" data-width="1080" data-height="1920" data-track-index="6" data-track-kind="captions" style="z-index: 10"></div>
+
+      <div data-hf-id="hf-128z" id="fade"></div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const FACE = "50% 38%";
+      const MIC_HEAD = "62% 96%";
+      const MIC_BODY = "64% 90%";
+
+      // ---- camera: punch-ins on emphasis, smooth zooms on product functions ----
+      tl.set("#cam", { scale: 1, transformOrigin: FACE }, 0);
+      // hook
+      tl.set("#cam", { scale: 1.12 }, 0.73); // "berbaloi"
+      tl.set("#cam", { scale: 1 }, 6);
+      // same punch in its original place
+      tl.set("#cam", { scale: 1.12 }, 14.18);
+      tl.set("#cam", { scale: 1 }, 16.1);
+      tl.set("#cam", { scale: 1.1 }, 24.1); // "Apatah lagi"
+      tl.set("#cam", { scale: 1 }, 28.5);
+      tl.set("#cam", { scale: 1.16 }, 30.08); // "Macam, huh"
+      tl.set("#cam", { scale: 1 }, 31.95);
+      // Dynamic capsule: zoom to the mic head
+      tl.set("#cam", { transformOrigin: MIC_HEAD }, 35.0);
+      tl.to("#cam", { scale: 1.45, duration: 0.8, ease: "power2.inOut" }, 35.35);
+      tl.to("#cam", { scale: 1, duration: 0.6, ease: "power2.inOut" }, 41.2);
+      // Touch-to-mute: zoom to the mic body
+      tl.set("#cam", { transformOrigin: MIC_BODY }, 53.5);
+      tl.to("#cam", { scale: 1.5, duration: 0.7, ease: "power2.inOut" }, 53.9);
+      // jump cut over the muted pause, re-framed
+      tl.set("#cam", { scale: 1.12 }, 58.3);
+      // unmute + volume knob
+      tl.to("#cam", { scale: 1.5, duration: 0.7, ease: "power2.inOut" }, 61.2);
+      tl.to("#cam", { scale: 1, duration: 0.6, ease: "power2.inOut" }, 68.7);
+      tl.set("#cam", { transformOrigin: FACE }, 69.4);
+      tl.set("#cam", { scale: 1.1 }, 76.48); // "So dia punya connector"
+      tl.set("#cam", { scale: 1 }, 79.7);
+      tl.set("#cam", { scale: 1.1 }, 94.78); // "So kalau hampa berminat"
+      tl.set("#cam", { scale: 1 }, 98.2);
+      tl.set("#cam", { scale: 1.16 }, 101.62); // "Simple, but solid"
+
+      // ---- B-roll: settle in, ease out ----
+      const broll = [
+        ["#bw-hook", 2.5, 3.5, false],
+        ["#bw-mic1", 15.95, 3.5, true],
+        ["#bw-mic2", 31.55, 3.4, true],
+        ["#bw-ports", 79.3, 4.8, true],
+        ["#bw-cable", 88.25, 4.15, true],
+      ];
+      broll.forEach(([sel, s, d, out]) => {
+        tl.fromTo(sel, { opacity: 0, scale: 1.07 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power3.out" }, s);
+        if (out) tl.to(sel, { opacity: 0, duration: 0.28, ease: "power2.in" }, s + d - 0.28);
+        else tl.set(sel, { opacity: 0 }, s + d);
+      });
+
+      // ---- end ----
+      tl.to("#fade", { opacity: 1, duration: 0.5, ease: "power2.in" }, 103.45);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

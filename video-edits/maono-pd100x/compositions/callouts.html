@@ -1,0 +1,130 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    #root .co {
+      position: absolute;
+      inset: 0;
+    }
+    #root .card {
+      position: absolute;
+      top: 210px;
+      right: 64px;
+      max-width: 620px;
+      padding: 26px 36px 30px 40px;
+      border-radius: 22px;
+      background: rgba(14, 14, 17, 0.62);
+      backdrop-filter: blur(20px) saturate(1.15);
+      -webkit-backdrop-filter: blur(20px) saturate(1.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      font-family: "Montserrat", sans-serif;
+      opacity: 0;
+    }
+    #root .bar {
+      position: absolute;
+      left: 0;
+      top: 26px;
+      bottom: 26px;
+      width: 5px;
+      border-radius: 0 4px 4px 0;
+      background: #ffd23f;
+    }
+    #root .kick {
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffd23f;
+    }
+    #root .title {
+      margin-top: 8px;
+      font-weight: 800;
+      font-size: 60px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+    #root .sub {
+      margin-top: 12px;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.25;
+      color: rgba(255, 255, 255, 0.84);
+    }
+    #root .swap {
+      position: relative;
+    }
+    #root .swap .sub + .sub {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="callouts" data-width="1080" data-height="1920">
+    <div id="co-hook" class="clip co" data-start="2.6" data-duration="3.38" data-track-index="0">
+      <div class="card"><div class="bar"></div><div class="kick">Bawah RM300</div><div class="title">MAONO PD100X</div><div class="sub">Dynamic podcast mic · USB / XLR</div></div>
+    </div>
+    <div id="co-prod" class="clip co" data-start="16.05" data-duration="3.45" data-track-index="0">
+      <div class="card"><div class="bar"></div><div class="kick">Bawah RM300</div><div class="title">MAONO PD100X</div><div class="sub">Dynamic podcast mic · USB / XLR</div></div>
+    </div>
+    <div id="co-sc1" class="clip co" data-start="21.4" data-duration="2.6" data-track-index="1">
+      <div class="card"><div class="bar"></div><div class="kick">Tanpa</div><div class="title">MAONO SOUNDCARD</div><div class="sub">Mic sahaja pun dah jelas</div></div>
+    </div>
+    <div id="co-sc2" class="clip co" data-start="26.9" data-duration="3.3" data-track-index="1">
+      <div class="card"><div class="bar"></div><div class="kick">Combo dengan</div><div class="title">MAONO SOUNDCARD</div><div class="sub">Suara lagi padu &amp; clear</div></div>
+    </div>
+    <div id="co-dyn" class="clip co" data-start="35.5" data-duration="5.8" data-track-index="2">
+      <div class="card"><div class="bar"></div><div class="kick">Fungsi</div><div class="title">Dynamic Mic</div><div class="sub">Fokus suara depan,<br />bunyi sekeliling ditolak</div></div>
+    </div>
+    <div id="co-side" class="clip co" data-start="41.8" data-duration="6.6" data-track-index="2">
+      <div class="card"><div class="bar"></div><div class="kick">Uji</div><div class="title">Cakap dari tepi</div><div class="sub">Hampir tak masuk langsung</div></div>
+    </div>
+    <div id="co-mute" class="clip co" data-start="54" data-duration="9.5" data-track-index="3">
+      <div class="card"><div class="bar"></div><div class="kick">Fungsi</div><div class="title">Touch-to-Mute</div><div class="swap"><div id="co-mute-a" class="sub">Sentuh sekali · lampu merah</div><div id="co-mute-b" class="sub">Sentuh lagi · terus unmute</div></div></div>
+    </div>
+    <div id="co-knob" class="clip co" data-start="63.65" data-duration="6.6" data-track-index="3">
+      <div class="card"><div class="bar"></div><div class="kick">Fungsi</div><div class="title">Knob Volume</div><div class="sub">Laras volume terus pada mic</div></div>
+    </div>
+    <div id="co-ports" class="clip co" data-start="79.5" data-duration="4.55" data-track-index="4">
+      <div class="card"><div class="bar"></div><div class="kick">Sambungan</div><div class="title">XLR + USB-C</div><div class="sub">Mixer, PC atau phone</div></div>
+    </div>
+    <div id="co-cable" class="clip co" data-start="88.4" data-duration="6.2" data-track-index="4">
+      <div class="card"><div class="bar"></div><div class="kick">2 Connector</div><div class="title">Type-C / USB-A</div><div class="sub">Cabut adapter, terus tukar</div></div>
+    </div>
+    <div id="co-cta" class="clip co" data-start="94.9" data-duration="5.7" data-track-index="5">
+      <div class="card"><div class="bar"></div><div class="kick">Nak beli?</div><div class="title">MAONO PD100X</div><div class="sub">Link kat bawah</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const cards = [
+      ["#co-hook", 2.6, 3.38],
+      ["#co-prod", 16.05, 3.45],
+      ["#co-sc1", 21.4, 2.6],
+      ["#co-sc2", 26.9, 3.3],
+      ["#co-dyn", 35.5, 5.8],
+      ["#co-side", 41.8, 6.6],
+      ["#co-mute", 54, 9.5],
+      ["#co-knob", 63.65, 6.6],
+      ["#co-ports", 79.5, 4.55],
+      ["#co-cable", 88.4, 6.2],
+      ["#co-cta", 94.9, 5.7],
+    ];
+    cards.forEach(([id, s, d]) => {
+      const card = id + " .card";
+      const parts = [id + " .kick", id + " .title", id + " .sub:first-child, " + id + " .card > .sub"];
+      tl.fromTo(card, { opacity: 0, x: 36, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.55, ease: "expo.out" }, s);
+      tl.fromTo(parts, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out", stagger: 0.07 }, s + 0.08);
+      tl.to(card, { opacity: 0, x: 18, filter: "blur(6px)", duration: 0.3, ease: "power2.in" }, s + d - 0.32);
+    });
+    // mute -> unmute line swap
+    tl.to("#co-mute-a", { opacity: 0, filter: "blur(6px)", duration: 0.2, ease: "power2.in" }, 61.75);
+    tl.fromTo("#co-mute-b", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.28, ease: "power2.out" }, 61.9);
+    window.__timelines["callouts"] = tl;
+  </script>
+</template>
