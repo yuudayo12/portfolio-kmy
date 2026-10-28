@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cemerlang Matematik T3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Latihan Matematik KSSM Tingkatan 3 dengan semakan langkah demi langkah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Lexend:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Konsep: buku latihan bergrid — kertas graf biru, dakwat biru tua, tanda pen merah/hijau, highlighter kuning.
+   Satu lajur sempit untuk telefon; navigasi bawah di telefon, tab atas di skrin lebar. */
+:root {
+  --bg: #F3F6FB;
+  --grid: rgba(64, 110, 190, 0.08);
+  --card: #FFFFFF;
+  --ink: #1C2B4A;
+  --muted: #5B6884;
+  --line: #DCE3EF;
+  --brand: #2350C8;
+  --brand-ink: #FFFFFF;
+  --hl: #FFD23F;
+  --hl-ink: #3A2E00;
+  --ok: #138A4B;
+  --ok-bg: #E3F6EC;
+  --bad: #D63A3F;
+  --bad-bg: #FDE8E8;
+  --fig-fill: #EAF0FB;
+  --fig-shade: rgba(35, 80, 200, 0.14);
+  --cube-top: #FFFFFF;
+  --cube-front: #C9D7F3;
+  --cube-side: #93ABE0;
+  --c1: #E8590C; --c2: #0B7285; --c3: #2B8A3E; --c4: #AE3EC9; --c5: #1971C2;
+  --c6: #C2255C; --c7: #5F3DC4; --c8: #E67700; --c9: #087F5B; --c0: #343A40;
+  --t1: #FFF0E6; --t2: #E3F5F8; --t3: #E6F5E9; --t4: #F8E9FC; --t5: #E5F0FB;
+  --t6: #FBE6EE; --t7: #EEE9FB; --t8: #FFF3E0; --t9: #E2F5EF; --t0: #ECEEF1;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Lexend", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r: 16px;
+  --shadow: 0 1px 2px rgba(28, 43, 74, 0.06), 0 6px 18px rgba(28, 43, 74, 0.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1424; --grid: rgba(120, 160, 255, 0.06); --card: #172036; --ink: #E7ECF7; --muted: #9AA7C2; --line: #2A3653;
+    --brand: #6E95FF; --brand-ink: #0E1424; --hl: #FFD23F; --hl-ink: #3A2E00;
+    --ok: #4CD38A; --ok-bg: #133325; --bad: #FF7A7E; --bad-bg: #3A1A1F;
+    --fig-fill: #1E2A47; --fig-shade: rgba(110, 149, 255, 0.2);
+    --cube-top: #3A4A72; --cube-front: #2A3A62; --cube-side: #1D2A4A;
+    --c1: #FF8A4C; --c2: #3BC9DB; --c3: #69DB7C; --c4: #DA77F2; --c5: #74C0FC;
+    --c6: #F783AC; --c7: #9775FA; --c8: #FFC078; --c9: #63E6BE; --c0: #CED4DA;
+    --t1: #33231A; --t2: #14303A; --t3: #183322; --t4: #2E1D36; --t5: #172B42;
+    --t6: #36192A; --t7: #241D40; --t8: #382A14; --t9: #12332A; --t0: #252B36;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1424; --grid: rgba(120, 160, 255, 0.06); --card: #172036; --ink: #E7ECF7; --muted: #9AA7C2; --line: #2A3653;
+  --brand: #6E95FF; --brand-ink: #0E1424; --hl: #FFD23F; --hl-ink: #3A2E00;
+  --ok: #4CD38A; --ok-bg: #133325; --bad: #FF7A7E; --bad-bg: #3A1A1F;
+  --fig-fill: #1E2A47; --fig-shade: rgba(110, 149, 255, 0.2);
+  --cube-top: #3A4A72; --cube-front: #2A3A62; --cube-side: #1D2A4A;
+  --c1: #FF8A4C; --c2: #3BC9DB; --c3: #69DB7C; --c4: #DA77F2; --c5: #74C0FC;
+  --c6: #F783AC; --c7: #9775FA; --c8: #FFC078; --c9: #63E6BE; --c0: #CED4DA;
+  --t1: #33231A; --t2: #14303A; --t3: #183322; --t4: #2E1D36; --t5: #172B42;
+  --t6: #36192A; --t7: #241D40; --t8: #382A14; --t9: #12332A; --t0: #252B36;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font: 400 15px/1.6 var(--font-body);
+  min-height: 100vh;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--hl); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 110px;
+}
+
+/* ---------- Bar atas ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--card); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.top-in {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px;
+  display: flex; align-items: center; gap: 12px;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); min-width: 0; }
+.logo-mark {
+  width: 36px; height: 36px; border-radius: 10px; flex: none;
+  background: var(--brand); color: var(--brand-ink);
+  display: grid; place-items: center;
+  font: 800 17px/1 var(--font-display);
+}
+.logo-mark sup { font-size: 10px; margin-left: 1px; }
+.logo-text { font: 700 18px/1.1 var(--font-display); white-space: nowrap; }
+.logo-text small { display: block; font: 500 11px/1.2 var(--font-body); color: var(--muted); }
+.nav { margin-left: auto; display: flex; gap: 4px; }
+.nav button {
+  border: 0; background: transparent; cursor: pointer;
+  padding: 8px 14px; border-radius: 999px; font-weight: 500; color: var(--muted);
+  display: inline-flex; align-items: center; gap: 6px; position: relative;
+}
+.nav button svg { width: 18px; height: 18px; }
+.nav button[aria-current="page"] { background: var(--t5); color: var(--brand); }
+.badge {
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: var(--bad); color: #fff; font: 600 11px/18px var(--font-body); text-align: center;
+}
+@media (max-width: 640px) {
+  .nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; margin: 0;
+    background: var(--card); border-top: 1px solid var(--line);
+    padding: 6px max(12px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    justify-content: space-around;
+  }
+  .nav button { flex-direction: column; gap: 2px; font-size: 12px; padding: 6px 12px; border-radius: 12px; flex: 1; }
+  .nav button svg { width: 22px; height: 22px; }
+  .nav .badge { position: absolute; top: 2px; left: calc(50% + 6px); }
+  body.quiz-mode .nav { display: none; }
+}
+
+/* ---------- Utama ---------- */
+.hero { padding-block: 26px 8px; display: grid; gap: 14px; }
+.hero h1 { font-size: clamp(28px, 6vw, 38px); }
+.hero h1 mark { background: linear-gradient(transparent 58%, var(--hl) 58%); color: inherit; padding: 0 2px; }
+.hero p { margin: 0; color: var(--muted); max-width: 56ch; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.stat b { display: block; font: 700 24px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+.sec-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-block: 26px 12px; }
+.sec-h h2 { font-size: 22px; }
+.sec-h span { font-size: 13px; color: var(--muted); }
+.sets { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
+.set {
+  display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 14px; text-align: left; cursor: pointer; box-shadow: var(--shadow);
+  transition: transform .15s ease, border-color .15s ease;
+}
+.set:hover { transform: translateY(-2px); border-color: var(--cc); }
+.ico {
+  width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+  background: var(--tt); color: var(--cc);
+  font: 800 18px/1 var(--font-display); grid-row: span 2;
+}
+.ico svg { width: 30px; height: 30px; }
+.set-t { min-width: 0; }
+.set-t small { display: block; font-size: 12px; color: var(--cc); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.set-t b { font: 700 17px/1.25 var(--font-display); display: block; }
+.set-m { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); min-width: 0; }
+.bar { flex: 1; height: 7px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--cc); border-radius: 4px; }
+.pill { font: 600 11px/1 var(--font-body); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.go { background: var(--t8); color: var(--c8); }
+.pill.new { background: var(--t0); color: var(--muted); }
+.reset { margin-top: 34px; padding: 16px; border: 1px dashed var(--line); border-radius: var(--r); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; font-size: 13px; color: var(--muted); }
+
+/* ---------- Butang ---------- */
+.btn {
+  border: 0; cursor: pointer; border-radius: 12px; padding: 12px 18px;
+  font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--brand); color: var(--brand-ink);
+}
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn.hl { background: var(--hl); color: var(--hl-ink); }
+.btn.danger { background: var(--bad); color: #fff; }
+.btn.sm { padding: 8px 12px; font-size: 13px; border-radius: 10px; }
+.icon-btn { border: 0; background: transparent; cursor: pointer; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: var(--ink); flex: none; }
+.icon-btn:hover { background: var(--t0); }
+.icon-btn svg { width: 22px; height: 22px; }
+
+/* ---------- Kuiz ---------- */
+.qhead { padding-block: 14px 6px; display: grid; gap: 12px; }
+.qhead-r { display: flex; align-items: center; gap: 8px; }
+.qhead-r h2 { font-size: 19px; flex: 1; min-width: 0; }
+.qhead-r h2 small { display: block; font: 600 11px/1.3 var(--font-body); color: var(--cc); letter-spacing: .05em; text-transform: uppercase; }
+.dots { display: flex; gap: 6px; overflow-x: auto; padding-block: 4px; scrollbar-width: none; }
+.dots::-webkit-scrollbar { display: none; }
+.dot-b {
+  flex: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+  border: 1.5px solid var(--line); background: var(--card); color: var(--muted);
+  font: 600 12px/1 var(--font-body); font-variant-numeric: tabular-nums;
+}
+.dot-b.ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+.dot-b.bad { background: var(--bad); border-color: var(--bad); color: #fff; }
+.dot-b.cur { box-shadow: 0 0 0 3px var(--hl); border-color: var(--ink); color: var(--ink); }
+.dot-b.cur.ok, .dot-b.cur.bad { color: #fff; }
+.qcard { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); display: grid; gap: 14px; }
+.qmeta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.lvl { font: 600 11px/1 var(--font-body); padding: 5px 9px; border-radius: 999px; letter-spacing: .03em; }
+.lvl.l1 { background: var(--t3); color: var(--c3); }
+.lvl.l2 { background: var(--t5); color: var(--c5); }
+.lvl.l3 { background: var(--t6); color: var(--c6); }
+.chip-bab { font: 600 11px/1 var(--font-body); padding: 5px 9px; border-radius: 999px; background: var(--t0); color: var(--ink); }
+.qtext { font-size: 17px; line-height: 1.65; }
+.qtext p { margin: 0 0 6px; }
+.figbox { background: var(--fig-fill); border-radius: 14px; padding: 10px; display: flex; justify-content: center; overflow-x: auto; }
+.figbox .fig { max-width: 100%; height: auto; max-height: 280px; }
+.opts { display: grid; gap: 10px; }
+.opts.svgopts { grid-template-columns: 1fr 1fr; }
+.opt {
+  display: flex; align-items: center; gap: 12px; text-align: left; cursor: pointer;
+  border: 1.5px solid var(--line); background: var(--card); border-radius: 14px; padding: 12px 14px;
+  font-size: 16px; min-height: 54px; transition: border-color .12s, background .12s;
+}
+.opt:hover:not(:disabled) { border-color: var(--brand); }
+.opt:disabled { cursor: default; }
+.opt .k {
+  flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+  background: var(--t0); font: 700 15px/1 var(--font-display);
+}
+.opt .v { min-width: 0; flex: 1; }
+.opt .v .fig { max-width: 100%; height: auto; max-height: 110px; display: block; margin: 0 auto; }
+.opt.pick-ok { border-color: var(--ok); background: var(--ok-bg); }
+.opt.pick-ok .k { background: var(--ok); color: #fff; }
+.opt.pick-bad { border-color: var(--bad); background: var(--bad-bg); }
+.opt.pick-bad .k { background: var(--bad); color: #fff; }
+.opt.is-ans { border-color: var(--ok); border-style: dashed; }
+.opt.is-ans .k { background: var(--ok); color: #fff; }
+.opt .tag { font: 600 11px/1.2 var(--font-body); padding: 4px 7px; border-radius: 6px; white-space: nowrap; }
+.opt .tag.y { background: var(--bad); color: #fff; }
+.opt .tag.c { background: var(--ok); color: #fff; }
+.fb { border-radius: 14px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
+.fb svg { width: 26px; height: 26px; flex: none; }
+.fb b { display: block; font: 700 17px/1.2 var(--font-display); }
+.fb.ok { background: var(--ok-bg); color: var(--ok); }
+.fb.bad { background: var(--bad-bg); color: var(--bad); }
+.fb p { margin: 2px 0 0; color: var(--ink); }
+.qnav { display: flex; gap: 10px; justify-content: space-between; margin-top: 14px; flex-wrap: wrap; }
+.qnav .btn { flex: 1; min-width: 130px; }
+.note-unans { font-size: 13px; color: var(--muted); text-align: center; margin-top: 10px; }
+.note-unans button { border: 0; background: none; color: var(--brand); font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0; }
+
+/* ---------- Keputusan ---------- */
+.result { padding-block: 26px; display: grid; gap: 16px; text-align: center; justify-items: center; }
+.ring { width: 170px; height: 170px; position: relative; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring .bg { fill: none; stroke: var(--line); stroke-width: 12; }
+.ring .fg { fill: none; stroke: var(--cc); stroke-width: 12; stroke-linecap: round; }
+.ring div { position: absolute; inset: 0; display: grid; place-content: center; }
+.ring b { font: 800 40px/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.ring span { font-size: 13px; color: var(--muted); }
+.grade { font: 700 22px/1.2 var(--font-display); }
+.grade-l { display: inline-block; padding: 4px 12px; border-radius: 10px; background: var(--hl); color: var(--hl-ink); margin-right: 8px; }
+.result p { margin: 0; color: var(--muted); max-width: 46ch; }
+.lvl-break { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; max-width: 460px; }
+.lvl-break div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
+.lvl-break b { display: block; font: 700 20px/1.2 var(--font-display); font-variant-numeric: tabular-nums; }
+.lvl-break span { font-size: 12px; color: var(--muted); }
+.result .acts { display: grid; gap: 10px; width: 100%; max-width: 360px; }
+
+/* ---------- Semakan ---------- */
+.rv-head { padding-block: 22px 10px; display: grid; gap: 12px; }
+.rv-head h1 { font-size: 28px; }
+.rv-head p { margin: 0; color: var(--muted); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.chip { flex: none; border: 1.5px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 12px; cursor: pointer; font-size: 13px; font-weight: 500; display: inline-flex; gap: 6px; align-items: center; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip .n { font-variant-numeric: tabular-nums; opacity: .75; }
+.seg { display: inline-flex; background: var(--t0); border-radius: 12px; padding: 4px; gap: 4px; }
+.seg button { border: 0; background: transparent; padding: 7px 12px; border-radius: 9px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: var(--shadow); }
+.rv-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.rv-list { display: grid; gap: 12px; }
+.rv { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
+.rv > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; }
+.rv > summary::-webkit-details-marker { display: none; }
+.rv .mark { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+.rv .mark svg { width: 18px; height: 18px; }
+.rv .mark.ok { background: var(--ok); }
+.rv .mark.bad { background: var(--bad); }
+.rv .sum-t { min-width: 0; }
+.rv .sum-t small { display: block; font-size: 12px; color: var(--muted); }
+.rv .sum-t span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rv .chev { width: 20px; height: 20px; transition: transform .2s; color: var(--muted); }
+.rv[open] .chev { transform: rotate(180deg); }
+.rv-body { padding: 0 16px 18px; display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+.sol { border-radius: 14px; background: var(--t5); padding: 14px 16px; display: grid; gap: 12px; }
+.sol h4 { margin: 0; font: 700 17px/1.2 var(--font-display); color: var(--brand); display: flex; align-items: center; gap: 8px; }
+.sol h4 svg { width: 20px; height: 20px; }
+.formula { background: var(--card); border: 1.5px dashed var(--brand); border-radius: 12px; padding: 10px 12px; font-size: 15px; overflow-x: auto; }
+.formula small { display: block; font: 600 11px/1.3 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: st; }
+.steps li { counter-increment: st; display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; font-size: 15px; line-height: 1.7; }
+.steps li::before {
+  content: counter(st); width: 26px; height: 26px; border-radius: 50%; background: var(--brand); color: var(--brand-ink);
+  display: grid; place-items: center; font: 700 13px/1 var(--font-display); margin-top: 1px;
+}
+.steps li > div { min-width: 0; overflow-x: auto; }
+.steps .fig { max-width: 100%; height: auto; max-height: 150px; display: block; margin-top: 6px; background: var(--card); border-radius: 10px; padding: 6px; }
+.final { background: var(--hl); color: var(--hl-ink); border-radius: 12px; padding: 10px 14px; font-weight: 600; }
+.tip { border-left: 4px solid var(--c8); background: var(--t8); padding: 10px 14px; border-radius: 0 12px 12px 0; font-size: 14px; }
+.tip b { color: var(--c8); }
+.empty { text-align: center; padding: 40px 20px; background: var(--card); border: 1px dashed var(--line); border-radius: var(--r); display: grid; gap: 10px; justify-items: center; }
+.empty svg { width: 56px; height: 56px; color: var(--ok); }
+.empty h3 { font-size: 20px; }
+.empty p { margin: 0; color: var(--muted); max-width: 40ch; }
+
+/* ---------- Nota ---------- */
+.nt-list { display: grid; gap: 12px; }
+.nt { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.nt > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 12px 14px; }
+.nt > summary::-webkit-details-marker { display: none; }
+.nt > summary .ico { width: 44px; height: 44px; font-size: 15px; grid-row: auto; }
+.nt > summary .ico svg { width: 26px; height: 26px; }
+.nt > summary b { font: 700 17px/1.2 var(--font-display); flex: 1; }
+.nt-body { padding: 4px 16px 18px; display: grid; gap: 14px; }
+.nt-sec h3 { font-size: 17px; margin-bottom: 6px; color: var(--cc); }
+.nt-sec p { margin: 0 0 8px; }
+.nt-sec ul { margin: 0 0 8px; padding-left: 20px; }
+.nt-sec li { margin-bottom: 4px; }
+.fbox { display: grid; gap: 6px; background: var(--tt); border-radius: 12px; padding: 10px 14px; font-size: 15px; overflow-x: auto; }
+.ex { font-size: 14px; border-left: 3px solid var(--cc); padding: 4px 0 4px 12px; margin-top: 8px; }
+.ex b { color: var(--cc); }
+
+/* Lembaran nota dalam kuiz */
+.sheet { position: fixed; inset: 0; z-index: 50; display: grid; align-items: end; justify-items: center; background: rgba(10, 16, 30, .45); }
+.sheet-in {
+  width: 100%; max-width: 760px; max-height: 85vh; overflow-y: auto; background: var(--bg);
+  border-radius: 22px 22px 0 0;
+  padding: 16px max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.sheet-h { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; position: sticky; top: -16px; background: var(--bg); padding-block: 8px; z-index: 1; }
+.sheet-h h3 { flex: 1; font-size: 20px; }
+
+/* Inline confirm */
+.confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ---------- Tatatanda matematik ---------- */
+.fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 2px; line-height: 1.15; font-size: .92em; }
+.fr .nu { padding: 0 3px 1px; border-bottom: 1.5px solid currentColor; }
+.fr .de { padding: 1px 3px 0; }
+.rt { white-space: nowrap; }
+.rt .rx { border-top: 1.5px solid currentColor; padding: 0 2px; margin-left: 1px; }
+.rt .ri { font-size: .6em; margin-right: -3px; vertical-align: .9em; }
+sup, sub { font-size: .7em; line-height: 0; }
+
+/* ---------- Rajah SVG ---------- */
+.fig { font-family: var(--font-body); overflow: visible; }
+.fig .ln { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.fig .ln.thin { stroke-width: 1.4; }
+.fig .ln.dash, .fig .dash { stroke-dasharray: 6 5; }
+.fig .ln.hl, .fig .hl { stroke: var(--bad); }
+.fig .ln.ok { stroke: var(--ok); stroke-width: 3; }
+.fig .ln.br { stroke: var(--brand); stroke-width: 2.5; }
+.fig .shade { fill: var(--fig-shade); stroke: none; }
+.fig .gl { stroke: var(--line); stroke-width: 1; }
+.fig .axis { stroke: var(--muted); stroke-width: 1.5; }
+.fig .arc { fill: none; stroke: var(--brand); stroke-width: 1.8; }
+.fig .arc.hl { stroke: var(--bad); }
+.fig text { fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fig .pl { font-weight: 600; font-size: 14px; }
+.fig .sl { font-size: 13px; fill: var(--muted); font-weight: 500; }
+.fig .al { font-size: 12.5px; fill: var(--brand); font-weight: 600; }
+.fig .al.hl { fill: var(--bad); }
+.fig .tk { font-size: 10px; fill: var(--muted); }
+.fig .ax { font-size: 13px; font-style: italic; fill: var(--muted); }
+.fig .dot { fill: var(--ink); }
+.fig .cf { fill: var(--cube-front); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
+.fig .cs { fill: var(--cube-side); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
+.fig .ct { fill: var(--cube-top); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
+.fig .arw { stroke: var(--bad); stroke-width: 2; }
+.fig .arwh { fill: var(--bad); }
+.fig .vf { fill: var(--card); }
+.fig .ve { stroke: var(--ink); stroke-width: 2; stroke-linecap: square; }
+.fig.view { overflow: visible; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media (max-width: 420px) {
+  .qcard { padding: 14px; }
+  .qtext { font-size: 16px; }
+  .stat b { font-size: 21px; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#utama" aria-label="Cemerlang Matematik T3, ke halaman utama">
+      <span class="logo-mark"><span>M<sup>3</sup></span></span>
+      <span class="logo-text">Cemerlang Matematik<small>KSSM Tingkatan 3</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigasi utama"></nav>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<div id="sheet-root"></div>
+
+<script src="js/render.js"></script>
+<script src="js/data/bab1.js"></script>
+<script src="js/data/bab2.js"></script>
+<script src="js/data/bab3.js"></script>
+<script src="js/data/bab4.js"></script>
+<script src="js/data/bab5.js"></script>
+<script src="js/data/bab6.js"></script>
+<script src="js/data/bab7.js"></script>
+<script src="js/data/bab8.js"></script>
+<script src="js/data/bab9.js"></script>
+<script src="js/data/campuran.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
