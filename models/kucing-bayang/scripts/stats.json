@@ -1,0 +1,35 @@
+{
+ "tris": {
+  "Cat_Body": 5324,
+  "Cat_Ears": 172,
+  "Cat_Eyes": 288,
+  "Cat_Nose": 100,
+  "Cat_Claws": 320,
+  "Cat_Glow_Markings": 756,
+  "Cat_Glow_ForeheadDiamond": 38,
+  "Cat_Fur_Head": 1110,
+  "Cat_Fur_Mane": 1020,
+  "Cat_Fur_Chest": 300,
+  "Cat_Fur_Back": 360,
+  "Cat_Fur_Belly": 270,
+  "Cat_Fur_Legs": 360,
+  "Cat_Fur_Tail": 560,
+  "FX_EnergyRibbons": 690,
+  "FX_Smoke_Back": 80,
+  "FX_Smoke_Shoulder": 80,
+  "FX_Smoke_Ground": 80,
+  "FX_Sparks_Magenta": 560
+ },
+ "model_tris_total": 10978,
+ "body_quads": 2662,
+ "body_seams": 323,
+ "body_parts_faces": {
+  "body": 1142,
+  "head": 429,
+  "fore_L": 204,
+  "fore_R": 157,
+  "hind_L": 194,
+  "hind_R": 176,
+  "tail": 360
+ }
+}
