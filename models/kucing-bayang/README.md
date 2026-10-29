@@ -1,7 +1,7 @@
 # Kucing Bayang Ungu (Shadow Cat)
 
 Model kucing bayang untuk Roblox, dibina dalam Blender 5.2 LTS berdasarkan imej rujukan.
-Status: **menunggu semakan sebelum eksport FBX.**
+Status: **FBX untuk Roblox sudah dieksport** (`export/kucing_bayang_roblox.fbx`).
 
 ![Preview dengan efek](preview/sheet_hero_fx.png)
 
@@ -11,7 +11,9 @@ Status: **menunggu semakan sebelum eksport FBX.**
 | --- | --- |
 | `kucing_bayang.blend` | Model + efek preview + kamera/lampu preview |
 | `preview/` | Render PNG lutsinar (tiada latar). Fail `sheet_*` diletak atas kelabu neutral untuk semakan sahaja |
-| `scripts/` | Skrip Python untuk bina semula model dari kosong |
+| `export/kucing_bayang_roblox.fbx` | FBX untuk Roblox: 15 mesh, ~11k segi tiga, tanpa efek, kamera atau lampu |
+| `export/SetupKucingBayang.lua` | Skrip Command Bar Roblox Studio untuk warna dan bahan (Neon) |
+| `scripts/` | Skrip Python untuk bina semula model dari kosong dan eksport FBX |
 
 ## Collection dan objek
 
@@ -55,11 +57,26 @@ Kucing menghadap -Y, Z ke atas, dan 1 unit = 1 m. Panjang kira-kira 1.43 m, ting
   Kelompok bulu dan corak cahaya berkongsi jalur UV yang sama, iaitu gradien dari pangkal ke hujung, sengaja untuk jimat tekstur.
 - Bahan dalam `.blend` hanya untuk preview Cycles. Dalam Roblox, gunakan Color/SurfaceAppearance.
 
+## Import ke Roblox Studio
+
+1. **Avatar > Import 3D** (3D Importer), pilih `export/kucing_bayang_roblox.fbx`.
+2. Dalam tetapan Transform, pastikan unit fail ialah **Meters**. Kucing akan jadi kira-kira 5.1 stud panjang dan 2.6 stud tinggi.
+   Anda boleh skala semula selepas import.
+3. Klik Import. Kucing menghadap ke hadapan Roblox (-Z). Kalau terbalik, putar 180° pada paksi Y dalam importer.
+4. Pilih Model tersebut dalam Explorer. Tampal isi `export/SetupKucingBayang.lua` ke dalam Command Bar, kemudian tekan Enter.
+
+Setiap objek menjadi satu MeshPart dengan nama yang sama. `Cat_Ears` dipecah kepada `Cat_Ears` dan `Cat_EarsInner`
+kerana MeshPart hanya ada satu bahan. Mesh terbesar ialah `Cat_Body` (5,324 segi tiga), jauh di bawah had 20,000 Roblox.
+
+Tetapan eksport (`scripts/export_fbx.py`): Apply Scalings = FBX Units Scale, Forward -Z, Up Y, Apply Transform,
+tanpa leaf bones dan animasi, Path Mode = Copy dengan Embed Textures.
+
 ## Bina semula
 
 ```bash
 python3 scripts/mc_body.py 0.004 scripts/body_raw.npz          # perlu numpy + scikit-image
 blender -b -P scripts/build_cat.py -- scripts kucing_bayang.blend
 blender -b kucing_bayang.blend -P scripts/verify_blend.py
+blender -b kucing_bayang.blend -P scripts/export_fbx.py -- export/kucing_bayang_roblox.fbx
 blender -b kucing_bayang.blend -P scripts/render_views.py -- preview 96 1100 hero,front,side,back34,face,wire,checker
 ```
